@@ -1,0 +1,43 @@
+\section{Internet of Things}
+In this section, we provide an introduction to \acrfull{iot} and their position in industry and business as well as examples of leveraging said devices and blockchain. We further discuss weak security points and how blockchain can strengthen them.  
+
+When we refer to \acrshort{iot}, we address small-scale devices that are exchanging data over the Internet or directly to one another \acrshort{m2m}. Their purpose is to offer insights with their measurements or automate procedures with an intelligent factor based on history and current data. They have the ability to measure, communicate and act all over the world. Often the functionality of said devices is limited, as well as their capabilities, they are dedicated to one function and their purpose is to deliver it to a central database or act based on user instructions. There are many applications in the wild, some notable ones are warehouse inventorying, healthcare, transport, food safety, monitoring and operating a smart home \cite{casino2018systematic}. Industry have them deployed as well, sharing many common characteristics and goals. They are being referred as \acrfull{iiot} and they cover many uses, industries and applications. Initially, focusing on the optimization of operational efficiency, intelligent manufacturing and smart industry. Particularly, connected machines and devices in industries such as oil and gas, transportation, power generation, and healthcare, where there is more at stake; an unplanned downtime, security breach, a system failure can result in life-threatening, financial damaging or high-risk situations. It is expected, within the next year, for the connected devices to reach 20 billion \cite{hung2017leading}, mainly because of our need to control and have a digital representation of the world. 
+
+In the rest of the subsections, we cover the basics of IoT, applications and issues that have arisen in the last years with the spike of unsecure interconnected things.
+
+\subsection{Security}
+IoT are usually low-powered devices that lack the hardware and computational power to support state-of-the-art security models, making them vulnerable to cyber attacks \cite{kolias2015securely}. One way to mitigate those attacks is through standardization of protocols and design in order for everyone to work on making them more secure by developing specialized hardware and software solutions. Blockchain can play a vital role in this standardization and race of securing the IoT. In late 2016, a \acrshort{ddos} attack was launched with the Mirai botnet, causing a huge disruption in internet services that affected major companies. The Mirai botnet exploits the weaknesses of IoT devices, allowing them to be hijacked and used to flood a target with requests\cite{kolias2017ddos}.
+
+Authors of \cite{javaid2018mitigating} suggest a framework for IoT, built on Ethereum to mitigate \acrshort{ddos} attacks. They propose a smart contract on Ethereum where it acts as an intermediary for all the communication done with traditional servers. Every time an IoT wants to send a message, it gets authenticated by the smart contract and eventually sends its message, both operations cost gas on Ethereum. If a device would act maliciously and send multiple requests, it would deplete its available gas and effectively mitigate the \acrshort{ddos} attack. 
+
+We continue by providing the building blocks of IoT Security, as stated by \cite{secure-IoT}.
+
+\subsubsection{Device Identity}
+Device Identity holds the foundations of security. The device identifier must be immutable, unique and attestable. Certificates must be issued for  devices and all important operations should take place in \acrfull{tee} and the keys should reside in a \acrfull{hsm}.
+
+\subsubsection{Provisioning and Management of Devices}
+Assigning certificates to devices makes possible to revoke access and also provide automated ongoing compliance with current security standards. Furthermore secure authentication, authorization and accountability minimizes the potential to compromise a device during the on-boarding process, where the devices get their access to the network. Certificates enable this safe bootstrapping to the network.
+
+\subsubsection{Confidentiality}
+It is mandatory to ensure sensitive information remains private and inaccessible to unauthorized parties. A device should encrypt locally stored sensitive information, the device should protect they keys as stated with \acrshort{hsm} and not be available across the bus. Finally end-to-end encryption should be used for all sensitive communications.
+
+\subsubsection{Integrity}
+The data created or received by a device must be trustworthy and tamper proof. Non-repudiation methods should be established to ensure the integrity, origin and delivery of data.
+
+\subsubsection{Availability}
+IoT devices should be designed to function in a predictable and expected manner if there is a loss of connectivity with the Internet. In addition, devices should limit requests from unknown or unauthorized entities to further limit attack surfaces and establish an "available to authorized users only" policy.
+
+\subsubsection{Life-cycle Management}
+As the industry evolves, more vulnerabilities will be discovered and fixed. It is crucial to establish a design where software updates are automated and not rely on any consumer action. To protect end-users and third parties, there should be a way to handle end of life of devices, by limiting device functionality where it is considered unsecure. That might be a result of outdated hardware to keep up with software updates. Disclosure of such actions should be clear and reach the users.
+
+\subsection{Communication Protocols}
+We find important to present some sets of communication means and protocols that are suitable for IoT, with respect to our use case. 
+
+\subsubsection{MQTT}
+\acrfull{mqtt} is a \acrfull{m2m} publish-subscribe based messaging protocol on top of TCP/IP, designed for bandwidth and power efficiency. Publish-subscribe scheme is event-driven and enables messages to be pushed to clients through an intermediary, a central communication point, an MQTT broker. Each client that publishes a message to the broker, includes a topic where the topic acts as the routing information for the broker. Each client that wants to receive messages subscribes to a certain topic and the broker delivers all messages from this topic to the client. Therefore, the clients do not have to know each other, they only communicate over the broker.  
+
+% %Images could be specific to our setup
+% \begin{enumerate}
+%     \item Image with clients and brokers
+%     \item Image explaining topics 
+% \end{enumerate}

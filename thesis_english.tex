@@ -1,0 +1,210 @@
+\def \digital{1}
+\if 1\digital
+	\documentclass[12pt]{report}
+\else
+	\documentclass[twoside,openright,12pt]{report}
+\fi
+
+\usepackage[no-math]{fontspec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xltxtra}
+% \usepackage{xgreek}
+% 	\nogreekalph
+
+\usepackage{newtxmath}
+\setmainfont{Times New Roman}
+\setmonofont[Scale=MatchLowercase]{SourceCodePro-Regular.otf}
+
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	headheight= 14.5pt,
+	left=2.54cm,
+	right=2.54cm,
+	top=2.54cm,
+	bottom=2.54cm
+}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage{graphicx}
+\graphicspath{ {images/}{plots/} }
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black}
+
+\usepackage[nottoc,notlof,notlot,numbib]{tocbibind}
+\usepackage{appendix}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage[format=hang,font=normalsize]{caption}
+\usepackage{subcaption}
+\usepackage[mode=text]{siunitx}
+\usepackage{standalone}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage[toc]{glossaries}
+\usepackage{listings-golang} % import this package after listings
+
+\usepackage{lstautogobble}  % Fix relative indenting
+\usepackage{color}          % Code coloring
+\usepackage{zi4}            % Nice font
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+
+\lstset{ 
+    numbers=left,
+    numbersep=15pt,
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=12pt,
+    xleftmargin=12pt,
+    tabsize=4,
+    captionpos=b,
+    language=Golang
+}
+
+\newcommand{\blankpage}{
+	\newpage
+	\thispagestyle{plain}
+	\mbox{}
+	\newpage
+}
+
+\makeglossaries
+\input{glossaries.tex}
+
+\def\bitcoin{%
+  \leavevmode
+  \vtop{\offinterlineskip %\bfseries
+    \setbox0=\hbox{B}%
+    \setbox2=\hbox to\wd0{\hfil\hskip-.03em
+    \vrule height .3ex width .15ex\hskip .08em
+    \vrule height .3ex width .15ex\hfil}
+    \vbox{\copy2\box0}\box2}}
+
+\begin{document}
+\pagenumbering{roman}
+
+\input{title_page.tex}
+
+\if 1\digital
+	\newgeometry{
+		headheight= 14.5pt,
+		left=3.1cm,
+		right=3.1cm,
+		top=2.54cm,
+		bottom=2.54cm
+	}
+\else
+	\newgeometry{
+		headheight= 14.5pt,
+		left=3.6cm,
+		right=2.6cm,
+		top=2.54cm,
+		bottom=2.54cm
+	}
+\fi
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[R]{\textit{ \nouppercase{\rightmark}} }
+\if 1\digital
+	\fancyfoot[C]{\thepage}
+	\fancypagestyle{plain}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\fancyfoot[C]{\thepage}
+	}
+	\fancypagestyle{empty}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\fancyfoot[C]{\thepage}
+	}
+\else
+	\fancyfoot[LE,RO]{\thepage}
+	\fancypagestyle{plain}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\fancyfoot[LE,RO]{\thepage}
+	}
+	\fancypagestyle{empty}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\fancyfoot[LE,RO]{\thepage}
+	}
+\fi
+
+\setcounter{page}{2}
+%====================intro chapters=============================
+\input{chapters/Pale_blue_dot.tex}
+\input{chapters/0_Acknowledgements.tex}
+\input{chapters/0_Abstract.tex}
+%===============================================================
+\tableofcontents 
+\thispagestyle{plain}
+\listoffigures
+\thispagestyle{plain}
+\listoftables
+\setglossarystyle{listhypergroup}
+%for hyperlinking terms on text and sort them alphabetically
+\printglossaries
+\if 1\digital
+\newgeometry{
+	headheight= 14.5pt,
+	%left=3.18cm,
+	left=3.81cm,
+	right=3.18cm,
+	top=2.54cm,
+	bottom=2.54cm
+}
+\else
+\newgeometry{
+	headheight= 14.5pt,
+	left=3.68cm,
+	right=2.68cm,
+	top=2.54cm,
+	bottom=2.54cm
+}
+\fi
+%===========================chapters============================
+\input{chapters/1_Introduction.tex}
+\input{chapters/2/2a_Cryptography.tex}
+\input{chapters/2/2b_BTC.tex}
+\input{chapters/2/2c_ETH.tex}
+\input{chapters/3/3a_DLTs.tex}
+\input{chapters/3/3b_IoT.tex}
+\input{chapters/3/3c_Case_study.tex}
+\input{chapters/4_Fabric.tex}
+\input{chapters/5_Related_Work.tex}
+\input{chapters/6_Analysis_Proxy.tex}
+\input{chapters/7_Future_Work.tex}
+%===============================================================
+\bibliographystyle{unsrt}
+\cite{*}
+\bibliography{references}
+\end{document}

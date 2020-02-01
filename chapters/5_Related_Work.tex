@@ -1,0 +1,28 @@
+\chapter{Related Work}
+Recently, platforms and applications that tend to merge IoT and blockchain have emerged from many diverse areas. This chapter presents related work companies and academia with some of the most characteristic applications that combine the two technologies. 
+\section{Companies in the space}
+\subsection{Filament's Blocklet}
+Filament is the company that produces Blocklet\cite{filament}, a small scale device that enables various machines to transact with popular blockchain networks such as Fabric and Ethereum. Specifically they provide two similar devices, one with a USB interface for common machines and another one with OBD-II connector for vehicles with an additional functionality, such as economic transaction and freight monitoring. 
+% \subsection{Ambrosus}
+% \cite{ambrosus}
+\subsection{Modum}
+Modum \cite{modum} is a Swiss-based company that produces a small-scale device that transacts with the Ethereum blockchain. It aims to provide data integrity for physical products, mainly focused on improving supply chain processes. Sensors on device record environmental conditions during freights and create transactions that target an Ethereum smart contract. This contract verifies sensor's readings each time products change ownership and it validates that the transaction meets the customer's standards. The solution includes devices that collect data, a mobile application to register, activate the sensor and a monitor tool to analyze the collected data. 
+\subsection{Riddle \& Code}
+Riddle \& Code \cite{riddle_and_code} has developed a hardware and software solution to help physical objects interface with a blockchain. At the heart of their services is a crypto-chip, where the private key is stored in a \acrshort{hsm} accessible and known only by the device. The purpose of this chip is to be embedded on a medium that offers wireless connectivity. Depending on the use case that might be a NFC tag on a tamper-proof sticker, an RFID or a fully fledged IoT device with \acrshort{ble}. Their main focus is to give identity to objects and handle data that come from IoT. Digital twins is a notable use case, they are virtual replicas of physical objects or systems that it's purpose is to handle information during the whole life cycle of a product \cite{sallaba2019iot}.
+\subsection{Crypto-anchors}
+Crypto-anchors \cite{crypto-anchor} are under development by IBM, abstractly they are tamper-proof digital fingerprints, easily verifiable, than can be embedded to products and linked to a blockchain. Particularly, it is a protocol that leverages custom made solutions for each family of use cases. They bridge the physical to digital world by using Artificial Intelligence and spectrometers that can be embedded in common smartphone cameras \cite{spectometers}, optical codes or tiny computers. These solutions aim to fight counterfeit products, provenance of food, automotive parts and any alteration of a product through the supply chain.
+\subsection{Proxy-SDK}
+The Proxy-SDK \cite{proxy-sdk} is a lightweight \acrshort{sdk} that enables \acrshort{iot} devices transact with a \acrlong{hlf} network. It is developed by Gero Dittmann \cite{gero} and Jens Jelitto \cite{jens} from IBM Research Zürich and it is based on \verb|fabric-sdk-go| \cite{fabric-sdk-go} which is developed by SecureKey and IBM. In the near future, it is going to be open source and available for public use. This thesis explores \textit{Proxy-SDK} and offers an architecture overview as well as an analysis with respect to performance, a crucial part to scale down and make it more efficient for IoT.
+The Proxy-SDK was presented at Hyperledger Global Forum 2018 \cite{proxy-sdk}
+
+\section{Academic Work}
+This section discuses some publications on use cases. 
+
+\subsection{Food Supply Chain}
+In paper, \cite{tian2017supply} the author proposes a system and demos how it works on the food supply chain with Hazard analysis and critical control points from the FDA. This system delivers real-time information to all supply chain members on the safety status of food products, reduce the risk of centralized information systems, and bring more secure, distributed, transparent, and collaborative attributes to the supply chain.
+
+\subsection{Vehicle to Vehicle communication}
+In paper \cite{lasla2018efficient}, authors discuss the use of blockchain for road safety. Specifically Cooperative Intelligent Transportation System (C-ITS) enables inter-networking of vehicles to exchange messages and coordinate their actions. Current communication is built with a centralized \acrshort{pki}. The authors suggest that with certificates on the blockchain, the presence of a single point of failure would be avoided. Furthermore, the computational overhead would be reduced since it is only needed to lookup the certificate and not verify to the root of trust. The system would support vehicle registration, admission, misbehavior notification and revocation in a completely decentralized manner.
+ 
+\subsection{Energy Trading}
+Authors of \cite{li2018consortium} present a solution for efficient and secure energy trading in micro-grids, energy harvesting networks and vehicle-to-grids \cite{kang2017enabling}. Their solution is based on a consortium blockchain network with \acrshort{iiot} nodes trading their surplus energy with other nodes in a \acrshort{p2p} fashion to locally satisfy energy demands, improve efficiency and decrease transfer loses. 

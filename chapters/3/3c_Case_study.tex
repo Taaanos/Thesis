@@ -1,0 +1,51 @@
+\section{Case study}
+In this section, we are going to analyze a case study, but first we are discussing the integration of blockchain and IoT.
+
+\subsection{Integration of Blockchain and IoT}
+Blockchain can enhance the IoT by providing a trusted sharing platform where information can be reliable and traceable. Blockchains, due to their strict architecture and standards, can offer a well-needed standardization for IoT trusted communications. In the case that data needs to be shared among participants with conflicting interests that need to trust each other, blockchain can be a perfect fit. One case would be food safety, where food is tracked from the manufacturer to consumer.
+
+Authors of \cite{reyna2018blockchain} offer some benefits of Blockchain and IoT integration, which we summarize and add to them below. 
+
+\subsubsection{Decentralization and scalability}
+As we stated before, current IoT ecosystems rely on centralized models where all devices are identified, authorized and connected through cloud servers owned by leading companies. A decentralized blockchain approach would adopt a standardized \acrshort{p2p} communication model to support the billion transactions of IoT devices. It will help scenarios where a conglomerate controls the processing and storage of the information of a huge part of the population. Blockchains are fault and crash tolerant, and IoT could benefit from such characteristics. 
+
+\subsubsection{Identity}
+Using a single platform to connect all devices will enable participants to identify every single device. All data that is being transacted in the blockchain could be uniquely identified with the device that provided them thus correlating and verifying origin of the data. Furthermore, blockchain provides a way to distributed authentication and authorization of devices for IoT applications. For example, giving rights to a person to unlock a smart lock. Work is being done on self-sovereign identity for humans and autonomous devices that aim to give decentralized identities with minimal disclosure of information on the blockchain \cite{khovratovich2017sovrin} \cite{lundkvist2017uport}.
+
+\subsubsection{Autonomy}
+Smart contracts, combined with IoT, can enable smart autonomous assets and hardware as a service where someone could rent but not own the hardware and pay through the blockchain. Additionally devices are capable of interacting with each other without the need of intermediaries.
+
+\subsubsection{Reliability}
+Device readings and information are attestable and immutable, living in the blockchain forever. Data is easily verifiable, traceable and thus accountable.
+
+\subsubsection{Security}
+Communications can be secured on the blockchain layer and each transaction or message exchanged between devices can be verified, an important application for vehicle communication is presented here \cite{lasla2018efficient}. In addition, \acrshort{pki} can be decentralized on the blockchain as described here \cite{fromknecht2014decentralized}.
+
+\subsection{Cold Chain Monitoring}
+\label{subsec:cold-chain-monitoring}
+Cold chains are used to guarantee a specific range of temperatures during freights. Applications range from pharmaceutical to food safety, chemicals to human blood and organs, primarily anything temperature-sensitive and intolerant. Fundamentally, they are temperature controlled supply chains and can also be a part of a supply chain. 
+
+A device with a temperature sensor, such as a Raspberry Pi, with an approved temperature probe, can measure a container's temperature and submit periodical transactions to a consortium blockchain. The blockchain network consists of entities such as pharmaceutical manufacturers, transportation companies, hospitals and pharmacies. Every participant needs to be able to verify that the temperature of goods was within the acceptable range as well as to automatically transfer ownership of goods based on the handler and location. One important benefit of blockchains is that information and quality control are easily auditable from the interested party, since data is linked and immutable. Hence, the acceleration of the quality control is achieved.
+
+Transactions can include a timestamp, location, monitoring goods, ownership and temperature. A device has its own identity, stored in a \acrshort{hsm}, and uses it to sign the transactions  it is broadcasting, thus each transaction is tamper-proof and uniquely identified by a device. 
+
+The problems we address here are:
+\begin{enumerate}
+    \item How can we accelerate a supply chain?
+    \item How do we trust that data came from a specific device?
+    \item How do we ensure data integrity?
+    \item How do we achieve non-repudiation for ownership of good during freight?
+\end{enumerate} 
+Below, we proceed to elaborate on how with our approach on blockchain and IoT can solve these problems.
+
+\subsubsection{Acceleration of supply chain}
+Acceleration comes from the network that all parties have joined. They can monitor the state of the goods and automatically change ownership from each handler with the use of smart contracts. For example, when a container leaves the manufacturer and is now handled by the transportation company, upon receiving the container an RFID is scanned, and it triggers a smart contract on the blockchain, where ownership is changed.
+
+\subsubsection{Trusting the origin of data}
+Trusting a device is associated with device's identity. Every member of the network needs a certificate, such certificates are assigned from a certificate authority and they get an associated entry on a membership service provider, which as explained in \ref{MSP}, maps certificates to identities on the network. Hence, each device has gone through an auditing process, and is now authorized and uniquely identified to access and transact with the network.
+
+\subsubsection{Data integrity}
+Since every device has its own key, it is able to sign the transactions and send them to the network for ordering. Transactions are accepted when various parameters are satisfied, e.g transaction must be signed by a white-listed entity. More details on how transactions work and propagate through the network could be found on \ref{ch:Fabric}.
+
+\subsubsection{Non repudiation of ownership}
+Non-repudiation of ownership means that a party upon receiving the goods, or any sort of information, cannot deny it. Every transaction is an action between parties, that might be a change of ownership or an update on the state, such as a temperature reading. Blockchains are immutable and information on the ledger is available to every participant, thus no one can deny that something happened as long as it lays on the chain.

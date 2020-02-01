@@ -1,0 +1,8 @@
+\chapter{Conclusions and Future work}
+
+\section{Conclusions}
+The Proxy-SDK is indeed lighter than the Full SDK and can be used in a pilot program on an IoT device.
+Consortium blockchains are a good fit when a shared database is needed upon multiple incentive conflicted participants. Additionally, IoT can benefit from such networks, be more secure, define a common way of interacting and deciding on public data. 
+
+\section{Future Work}
+Scaling down and minimizing computations is important for IoT devices, even more when resilience and a 24-7 operation are needed. A next step could be to port the client component of the Proxy-SDK in C and use a \acrshort{mcu} coupled with a sensor to create transactions. There are solutions for cryptographic acceleration hardware \cite{atecc-crypto}, \acrshort{tee} and \acrshort{hsm} to secure the keys in the \acrshort{mcu}. Another important aspect to analyze is the behaviour of the proxy, how does it scale, do we need more proxies in order to secure up-time for the clients? Finally, bootstrapping techniques should be investigated to initialize devices on the network.
